@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use App\RoleEnum;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,7 @@ Route::middleware([
     Route::resource('users', UserController::class)
         ->middleware(['role:' . RoleEnum::Admin->value]);
     Route::resource('customers', CustomerController::class);
+    Route::resource('reservations', ReservationController::class);
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');

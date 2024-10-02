@@ -23,6 +23,9 @@
                     <x-nav-link href="{{ route('customers.index') }}" :active="request()->routeIs('customers.*')">
                         {{ __('Customers') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('reservations.index') }}" :active="request()->routeIs('reservations.*')">
+                        {{ __('Reservations') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -157,6 +160,9 @@
             @endrole
             <x-responsive-nav-link href="{{ route('customers.index') }}" :active="request()->routeIs('customers.*')">
                 {{ __('Customers') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('reservations.index') }}" :active="request()->routeIs('reservations.*')">
+                {{ __('Reservations') }}
             </x-responsive-nav-link>
         </div>
 
