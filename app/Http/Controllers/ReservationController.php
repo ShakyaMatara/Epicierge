@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PermissionEnum;
 use App\Models\Customer;
 use App\Models\Reservation;
 use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\UpdateReservationRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 
 class ReservationController extends Controller
@@ -68,6 +70,8 @@ class ReservationController extends Controller
      */
     public function destroy(Reservation $reservation)
     {
+        Gate::authorize(PermissionEnum::DELETE_RESERVATIONS->value);
+
         $reservation->delete();
 
         return redirect()->route('reservations.index');

@@ -47,6 +47,7 @@
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <a href="{{ route('customers.edit', $customer) }}" class="text-blue-600 hover:text-blue-900">Edit</a>
+                                @can(\App\Enums\PermissionEnum::DELETE_CUSTOMERS->value)
                                 <form action="{{ route('customers.destroy', $customer) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure?')">
                                     @csrf
                                     @method('DELETE')
@@ -54,6 +55,7 @@
                                         Delete
                                     </button>
                                 </form>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

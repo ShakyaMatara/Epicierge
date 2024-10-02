@@ -16,7 +16,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::resource('users', UserController::class)
-        ->middleware(['role:' . RoleEnum::Admin->value]);
+        ->middleware('can:' . \App\Enums\PermissionEnum::MANAGE_USERS->value);
     Route::resource('customers', CustomerController::class);
     Route::resource('reservations', ReservationController::class);
     Route::get('/dashboard', function () {
